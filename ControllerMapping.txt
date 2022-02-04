@@ -1,0 +1,48 @@
+Sketch number button scheme
+
+Home - 12
+Capture - 13
+a - 2
+b - 1
+x - 3
+y - 0
+
+l - 4
+r - 5
+zl - 6
+zr - 7
+
++ - 9
+- - 8
+
+It can be inferred that stick clicks are on 10 and 11, I dont know in what order, though.
+EDIT:Yes, They are. LS is 10 and RS is 11
+
+
+
+Axis Mapings
+
+X, Y   : LeftX, LeftY
+Z, Zrot: RightX, RightY
+
+Dpad Mappings
+
+Up: Joystick.setHatSwitch(0);
+
+Number increases by one every 45 degrees clockwise until it reaches 7
+No pad pressed(HAT centre): Joystick.setHatSwitch(-1);
+
+
+Joystick Stuff
+
+Analog values from -127 to 127
+
+Remember to call Joystick.sendState();
+
+
+Data Transmission stuff
+
+14 total buttons - two bytes neee for that
+Hat(dpad) is one of 9 states (-1 to 7)-  0.5 bytes needed
+Each axis is from -127 to 128. A single byte signed integer for each.
+2+0.5+(1*4)=6.5  7bytes of data is nescessary for the ful state of the controller.
