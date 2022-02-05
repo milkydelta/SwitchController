@@ -1,19 +1,23 @@
-//Only works on Leonardo, Micro and other boards based on the 32u4
+// NOTE: This sketch file is for use with Arduino Leonardo and
+//       Arduino Micro only.
+//
 //H:-In order to function under switch, this relies upon resources from https://github.com/Jas2o/Leonardo-Switch-Controller
 
 //I give thanks to this thread for educating me on how to convert a byte to a signed integer https://forum.arduino.cc/t/byte-to-signed-int/667253/5
 
-//TODO: implement a counter for how many bytes of a message you have.
-//TODO: make it possible to send -127 on an axis without shifting every message one byte out of alignment, breaking everything.
 
 
 #include <Joystick.h>
 
 
-byte dataBuffer[7] = {128,128,128,128,128,128,128};
+byte dataBuffer[7] = {0,0,0,0,0,0,0};
 int tempBuffer=0;
 
 int16_t axisTemp;
+
+int byteIndex=0;
+
+
 
 
 void setup() {
@@ -56,14 +60,11 @@ void joystickStateUpdate() {
 void serialEvent1() {
   tempBuffer = Serial1.read();
   if (tempBuffer!=-1){
-    for (int i=0;i<7;i++) {
-      if (dataBuffer[i]==128){
-        dataBuffer[i]=byte(tempBuffer);
-        if (i==6) {
-          joystickStateUpdate();
-        }
-        break;
-        }
+    dataBuffer[byteIndex]=byte(tempBuffer);
+    byteIndex+=1;
+    if (byteIndex==7) {
+      joystickStateUpdate();
+      byteIndex=0;
       }
     }
   }
