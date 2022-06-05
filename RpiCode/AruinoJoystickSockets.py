@@ -5,7 +5,7 @@ import json
 
 
 print("Please enter the serial port of the Arduino.")
-print("Linux Desktop: /dev/ttyUSB_  or /dev/ttyACM_")
+print("Linux Desktop: /dev/ttySOMETHINGOROTHER")
 print("RasPi GPIO: /dev/ttyAMA0")
 print("Windows: COM_")
 serport=input("")
