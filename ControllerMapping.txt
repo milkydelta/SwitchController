@@ -1,3 +1,10 @@
+//IMPORTANT: READ FIRST
+//
+//This file is a mess created to jot down notes during development.
+//For a much more readable alternative, see ByteSequenceExplanation.txt
+//
+
+
 Sketch number button scheme
 
 Home - 12

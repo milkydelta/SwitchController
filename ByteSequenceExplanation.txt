@@ -1,0 +1,42 @@
+Byte 0 contains the states of the first 7 buttons (0 to 6). The most-significant (leftmost) bit is ignored
+
+Byte 1 contains the states of the last 7 buttons (7 to 13). The most-significant (leftmost) bit is ignored
+
+Within the bytes, the buttons are ordered least significant bit to most significant bit.
+
+Each numbered button serves the following function. (I think. I havent checked in a while)
+
+Y - 0
+B - 1
+A - 2
+X - 3
+L - 4
+R - 5
+ZL - 6
+
+ZR - 7
+- - 8
++ - 9
+LS Click - 10
+RS Click - 11
+Home - 12
+Capture - 13
+
+
+Byte 2 contains the state of the hat (dpad). This is a signed integer.
+-1 is no directions pressed and 0 to 7 are the directions of an 8-way dpad
+It increases by one for every 45 degrees clockwise with 0 representing North.
+
+
+Byte 3 is the Left X axis as a signed integer
+
+Byte 4 is the Left Y axis as a signed integer
+
+Byte 5 is the Right X axis as a signed integer
+
+Byte 6 is the Right Y axis as a signed integer
+
+
+
+I got this info by reading the uncommented arduino sketch, so I may have labelled these incorrectly.
+Thankfully, I have learned from my previous self and will try to comment any future projects thoroughly.
